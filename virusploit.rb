@@ -7,18 +7,13 @@ App_ROOT = File.dirname(__FILE__)
 #require_relative 'data/scanners/port_scanner'
 require_relative 'lib/view_code'
 
-puts '''
-          ViRuSSpLoIt   V 0.0.1
-
-            Coded By Virus007
-
-      Email : virus007@protonmail.com
-
-
-'''.blue
+logo = File.open("logo/1.txt")
+puts logo.read.yellow
 
 puts "1.".red + "View Exploit."
 puts "2.".red + "Port Scanner."
+puts "3.".red + "Fake Page Text Finder."
+puts "4.".red + "About."
 print "\nVsPl>".red
 recv = gets.chomp
 
@@ -34,4 +29,13 @@ if recv == '2'
 	port = gets.chomp
 	#run exploit
 	system ("ruby" + " " + "data/scanners/port_scanner.rb" + " " + ip + " " + port)
+end
+
+if recv == '3'
+	system ("python data/scanners/FPTF.py")
+end
+
+if recv == '4'
+	file = File.open("logo/about.txt")
+	puts file.read.red
 end
